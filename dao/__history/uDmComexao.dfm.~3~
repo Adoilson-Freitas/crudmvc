@@ -1,0 +1,17 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 350
+  Width = 505
+  object Banco: TIBDatabase
+    Connected = True
+    DatabaseName = 'C:\Users\Adoilson\Documents\Login\CADPRODUTO.FDB'
+    Params.Strings = (
+      'user_name=sysdba'
+      'password=masterkey'
+      'lc_ctype=ISO8859_1')
+    LoginPrompt = False
+    ServerType = 'IBServer'
+    Left = 128
+    Top = 96
+  end
+end

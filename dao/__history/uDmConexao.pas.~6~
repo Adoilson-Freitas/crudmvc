@@ -1,0 +1,27 @@
+unit uDmConexao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, IBX.IBDatabase, Data.DB, IBX.IBCustomDataSet,
+  Data.DBXInterBase, Data.SqlExpr;
+
+type
+  TDataModule1 = class(TDataModule)
+    SQLConexao: TSQLConnection;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

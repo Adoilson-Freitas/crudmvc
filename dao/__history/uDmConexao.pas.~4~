@@ -1,0 +1,35 @@
+unit uDmConexao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, IBX.IBDatabase, Data.DB, IBX.IBCustomDataSet;
+
+type
+  TDataModule1 = class(TDataModule)
+    Banco: TIBDatabase;
+    transaction: TIBTransaction;
+    dsetProduto: TIBDataSet;
+    dsrcProduto: TDataSource;
+    dsetProdutoCODIGO: TIntegerField;
+    dsetProdutoNOME: TIBStringField;
+    dsetProdutoDESCRICAO: TIBStringField;
+    dsetProdutoPRECO: TIntegerField;
+    dsetProdutoESTOQUE: TIntegerField;
+    dsetProdutoFORNECEDOR: TIBStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

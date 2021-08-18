@@ -1,0 +1,29 @@
+unit uDmComexao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, IBX.IBDatabase, Data.DB, IBX.IBCustomDataSet;
+
+type
+  TDataModule1 = class(TDataModule)
+    Banco: TIBDatabase;
+    transaction: TIBTransaction;
+    IBDataSet1: TIBDataSet;
+    DataSource1: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

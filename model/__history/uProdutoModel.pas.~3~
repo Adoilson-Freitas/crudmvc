@@ -1,0 +1,18 @@
+unit uProdutoModel;
+
+interface
+
+type
+  TProduto = class
+  private
+  public
+    property Codigo: Integer read FCodigo write FCodigo;
+    property Nome: string;
+    property Descricao: string read FDescricao write FDescricao;
+    property preco: Integer read FPreco write FPreco;
+    property Estoque: Integer read FEstoque write FEstoque;
+    property Fornecedor: string read FFornecedor write FFornecedor;
+  end;
+implementation
+
+end.

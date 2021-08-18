@@ -1,0 +1,68 @@
+unit uProdutoModel;
+
+interface
+
+  uses
+    System.SysUtils;
+
+type
+  TProduto = class
+  private
+    FPreco: Integer;
+    FDescricao: string;
+    FCodigo: Integer;
+    FEstoque: Integer;
+    FFornecedor: string;
+    FNome: string;
+    procedure SetNome(const Value: string);
+    procedure SetDescricao(const Value: string);
+    procedure SetEstoque(const Value: Integer);
+    procedure SetFornecedor(const Value: string);
+    procedure Setpreco(const Value: Integer);
+  public
+    property Codigo: Integer read FCodigo write FCodigo;
+    property Nome: string read FNome write SetNome;
+    property Descricao: string read FDescricao write SetDescricao;
+    property preco: Integer read Fpreco write Setpreco;
+    property Estoque: Integer read FEstoque write SetEstoque;
+    property Fornecedor: string read FFornecedor write SetFornecedor;
+  end;
+implementation
+
+{ TProduto }
+
+procedure TProduto.SetDescricao(const Value: string);
+begin
+  if Value = EmptyStr then
+    raise Exception.Create('Preencha o campo');
+  
+  FDescricao := Value;
+end;
+
+procedure TProduto.SetEstoque(const Value: Integer);
+begin
+  FEstoque := Value;
+end;
+
+procedure TProduto.SetFornecedor(const Value: string);
+begin
+if Value = EmptyStr then
+    raise Exception.Create('Preencha o campo');
+  
+  FFornecedor := Value;
+end;
+
+procedure TProduto.SetNome(const Value: string);
+begin
+if Value = EmptyStr then
+    raise Exception.Create('Preencha o campo');
+  
+  FNome := Value;
+end;
+
+procedure TProduto.Setpreco(const Value: Integer);
+begin
+  Fpreco := Value;
+end;
+
+end.

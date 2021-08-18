@@ -1,0 +1,104 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 350
+  Width = 505
+  object Banco: TIBDatabase
+    Connected = True
+    DatabaseName = 'C:\Users\Adoilson\Documents\Login\CADPRODUTO.FDB'
+    Params.Strings = (
+      'user_name=sysdba'
+      'password=masterkey'
+      'lc_ctype=ISO8859_1')
+    LoginPrompt = False
+    ServerType = 'IBServer'
+    Left = 56
+    Top = 64
+  end
+  object transaction: TIBTransaction
+    Active = True
+    DefaultDatabase = Banco
+    Left = 128
+    Top = 80
+  end
+  object dsetProduto: TIBDataSet
+    Database = Banco
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from PROD'
+      'where'
+      '  CODIGO = :CODIGO')
+    InsertSQL.Strings = (
+      'insert into PROD'
+      '  (NOME, DESCRICAO, PRECO, ESTOQUE, FORNECEDOR)'
+      'values'
+      '  (:NOME, :DESCRICAO, :PRECO, :ESTOQUE, :FORNECEDOR)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  CODIGO,'
+      '  NOME,'
+      '  DESCRICAO,'
+      '  PRECO,'
+      '  ESTOQUE,'
+      '  FORNECEDOR'
+      'from PROD '
+      'where'
+      '  CODIGO = :CODIGO')
+    SelectSQL.Strings = (
+      'select * from prod')
+    ModifySQL.Strings = (
+      'update PROD'
+      'set'
+      '  NOME = :NOME,'
+      '  DESCRICAO = :DESCRICAO,'
+      '  PRECO = :PRECO,'
+      '  ESTOQUE = :ESTOQUE,'
+      '  FORNECEDOR = :FORNECEDOR'
+      'where'
+      '  CODIGO = :CODIGO')
+    ParamCheck = True
+    UniDirectional = False
+    Active = True
+    Left = 240
+    Top = 88
+    object dsetProdutoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'PROD.CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object dsetProdutoNOME: TIBStringField
+      FieldName = 'NOME'
+      Origin = 'PROD.NOME'
+      Required = True
+      Size = 255
+    end
+    object dsetProdutoDESCRICAO: TIBStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'PROD.DESCRICAO'
+      Required = True
+      Size = 255
+    end
+    object dsetProdutoPRECO: TIntegerField
+      FieldName = 'PRECO'
+      Origin = 'PROD.PRECO'
+      Required = True
+    end
+    object dsetProdutoESTOQUE: TIntegerField
+      FieldName = 'ESTOQUE'
+      Origin = 'PROD.ESTOQUE'
+      Required = True
+    end
+    object dsetProdutoFORNECEDOR: TIBStringField
+      FieldName = 'FORNECEDOR'
+      Origin = 'PROD.FORNECEDOR'
+      Required = True
+      Size = 255
+    end
+  end
+  object dsrcProduto: TDataSource
+    DataSet = dsetProduto
+    Left = 336
+    Top = 88
+  end
+end

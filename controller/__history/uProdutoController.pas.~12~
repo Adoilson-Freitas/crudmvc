@@ -1,0 +1,42 @@
+unit uProdutoController;
+
+interface
+
+uses
+  uProdutoModel, uDmProduto;
+
+type
+  TProdutoController =  class
+    public
+      procedure CarregarProduto(oProduto: TProduto; iCodigo: Integer);
+      function Inserir(oProduto: TProduto; var sErro: string): Boolean;
+      function Alterar(oProduto: TProduto; var sErro: string): Boolean;
+      function Excluir(iCodigo: Integer; var sErro: string): Boolean;
+  end;
+
+implementation
+
+{ TProdutoController }
+
+function TProdutoController.Alterar(oProduto: TProduto;
+  var sErro: string): Boolean;
+  // recebe metodo alterar da camada dao
+begin
+  Result := DmProduto.Alterar(oProduto, sErro);
+end;
+
+function TProdutoController.Excluir(iCodigo: Integer;
+  var sErro: string): Boolean;
+  // recebe metodo excluir da camada dao
+begin
+  Result := DmProduto.Excluir(iCodigo, sErro);
+end;
+
+function TProdutoController.Inserir(oProduto: TProduto;
+ var sErro: string): Boolean;
+// recebe metodo inserir da camada dao
+begin
+  Result := DmProduto.Inserir(oProduto, sErro);
+end;
+
+end.

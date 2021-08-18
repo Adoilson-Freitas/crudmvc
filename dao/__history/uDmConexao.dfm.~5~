@@ -1,0 +1,152 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 350
+  Width = 505
+  object Banco: TIBDatabase
+    Connected = True
+    DatabaseName = 'C:\Users\Adoilson\Documents\Login\CADPRODUTO.FDB'
+    Params.Strings = (
+      'user_name=sysdba'
+      'password=masterkey'
+      'lc_ctype=ISO8859_1')
+    LoginPrompt = False
+    ServerType = 'IBServer'
+    Left = 56
+    Top = 16
+  end
+  object transaction: TIBTransaction
+    Active = True
+    DefaultDatabase = Banco
+    Left = 120
+    Top = 16
+  end
+  object dsetProduto: TIBDataSet
+    Database = Banco
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from PROD'
+      'where'
+      '  CODIGO = :CODIGO')
+    InsertSQL.Strings = (
+      'insert into PROD'
+      '  (NOME, DESCRICAO, PRECO, ESTOQUE, FORNECEDOR)'
+      'values'
+      '  (:NOME, :DESCRICAO, :PRECO, :ESTOQUE, :FORNECEDOR)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  CODIGO,'
+      '  NOME,'
+      '  DESCRICAO,'
+      '  PRECO,'
+      '  ESTOQUE,'
+      '  FORNECEDOR'
+      'from PROD '
+      'where'
+      '  CODIGO = :CODIGO')
+    SelectSQL.Strings = (
+      'select * from prod')
+    ModifySQL.Strings = (
+      'update PROD'
+      'set'
+      '  NOME = :NOME,'
+      '  DESCRICAO = :DESCRICAO,'
+      '  PRECO = :PRECO,'
+      '  ESTOQUE = :ESTOQUE,'
+      '  FORNECEDOR = :FORNECEDOR'
+      'where'
+      '  CODIGO = :CODIGO')
+    ParamCheck = True
+    UniDirectional = False
+    Active = True
+    Left = 208
+    Top = 24
+    object dsetProdutoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'PROD.CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object dsetProdutoNOME: TIBStringField
+      FieldName = 'NOME'
+      Origin = 'PROD.NOME'
+      Required = True
+      Size = 255
+    end
+    object dsetProdutoDESCRICAO: TIBStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'PROD.DESCRICAO'
+      Required = True
+      Size = 255
+    end
+    object dsetProdutoPRECO: TIntegerField
+      FieldName = 'PRECO'
+      Origin = 'PROD.PRECO'
+      Required = True
+    end
+    object dsetProdutoESTOQUE: TIntegerField
+      FieldName = 'ESTOQUE'
+      Origin = 'PROD.ESTOQUE'
+      Required = True
+    end
+    object dsetProdutoFORNECEDOR: TIBStringField
+      FieldName = 'FORNECEDOR'
+      Origin = 'PROD.FORNECEDOR'
+      Required = True
+      Size = 255
+    end
+  end
+  object dsrcProduto: TDataSource
+    DataSet = dsetProduto
+    Left = 296
+    Top = 24
+  end
+  object SQLConexao: TSQLConnection
+    ConnectionName = 'conexaoProd'
+    DriverName = 'Interbase'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverUnit=Data.DBXInterBase'
+      
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver270.' +
+        'bpl'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
+        'nd.Data.DbxCommonDriver,Version=24.0.0.0,Culture=neutral,PublicK' +
+        'eyToken=91d62ebb5b0d1b1b'
+      
+        'MetaDataPackageLoader=TDBXInterbaseMetaDataCommandFactory,DbxInt' +
+        'erBaseDriver270.bpl'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXInterbaseMetaDataCommand' +
+        'Factory,Borland.Data.DbxInterBaseDriver,Version=24.0.0.0,Culture' +
+        '=neutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'GetDriverFunc=getSQLDriverINTERBASE'
+      'LibraryName=dbxint.dll'
+      'LibraryNameOsx=libsqlib.dylib'
+      'VendorLib=GDS32.DLL'
+      'VendorLibWin64=ibclient64.dll'
+      'VendorLibOsx=libgds.dylib'
+      'Database=C:\Users\Adoilson\Documents\Login\CADPRODUTO.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'Role=RoleName'
+      'MaxBlobSize=-1'
+      'LocaleCode=0000'
+      'IsolationLevel=ReadCommitted'
+      'SQLDialect=3'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'TrimChar=False'
+      'DisplayDriverName=InterBase Server'
+      'BlobSize=-1'
+      'ErrorResourceFile='
+      'RoleName=RoleName'
+      'ServerCharSet='
+      'Trim Char=False'
+      'SEP=')
+    Connected = True
+    Left = 64
+    Top = 168
+  end
+end
