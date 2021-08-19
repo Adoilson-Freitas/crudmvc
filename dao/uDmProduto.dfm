@@ -3,7 +3,9 @@ object DmProduto: TDmProduto
   Height = 349
   Width = 498
   object sqlPesquisar: TSQLDataSet
-    CommandText = 'select codigo, nome, fornecedor from prod where(nome like :nome)'
+    CommandText = 
+      'select codigo, nome, fornecedor from produtos where(nome like :n' +
+      'ome)'
     MaxBlobSize = -1
     Params = <
       item
@@ -17,9 +19,9 @@ object DmProduto: TDmProduto
   end
   object sqlInserir: TSQLDataSet
     CommandText = 
-      'insert into prod (codigo, nome, descricao, preco, estoque, forne' +
-      'cedor)'#13#10'values (:codigo, :nome, :descricao, :preco, :estoque, :f' +
-      'ornecedor)'
+      'insert into produtos (codigo, nome, descricao, preco, estoque, f' +
+      'ornecedor)'#13#10'values (:codigo, :nome, :descricao, :preco, :estoque' +
+      ', :fornecedor)'
     MaxBlobSize = -1
     Params = <
       item
@@ -58,9 +60,9 @@ object DmProduto: TDmProduto
   end
   object sqlAlterar: TSQLDataSet
     CommandText = 
-      'update prod'#13#10'set nome = :nome,'#13#10'    descricao = :descricao,'#13#10'   ' +
-      ' preco = :preco,'#13#10'    estoque = :estoque,'#13#10'    fornecedor = :for' +
-      'necedor'#13#10'where (codigo = :codigo)'
+      'update produtos'#13#10'set nome = :nome,'#13#10'    descricao = :descricao,'#13 +
+      #10'    preco = :preco,'#13#10'    estoque = :estoque,'#13#10'    fornecedor = ' +
+      ':fornecedor'#13#10'where (codigo = :codigo)'
     MaxBlobSize = -1
     Params = <
       item
@@ -98,7 +100,7 @@ object DmProduto: TDmProduto
     Top = 40
   end
   object sqlExcluir: TSQLDataSet
-    CommandText = 'delete from prod'#13#10'where (codigo = :codigo)'
+    CommandText = 'delete from produtos'#13#10'where (codigo = :codigo)'
     MaxBlobSize = -1
     Params = <
       item
@@ -134,12 +136,12 @@ object DmProduto: TDmProduto
     object cdsPesquisarNOME: TStringField
       FieldName = 'NOME'
       Required = True
-      Size = 255
+      Size = 30
     end
     object cdsPesquisarFORNECEDOR: TStringField
       FieldName = 'FORNECEDOR'
       Required = True
-      Size = 255
+      Size = 40
     end
   end
 end

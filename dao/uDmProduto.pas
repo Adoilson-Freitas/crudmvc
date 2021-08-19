@@ -70,7 +70,7 @@ begin
      with sqlProduto do
      begin
        SQLConnection := DmConexao.SQLConexao;
-       CommandText := 'select * from prod where (codigo = ' + IntToStr(iCodigo) + ')';
+       CommandText := 'select * from produtos where (codigo = ' + IntToStr(iCodigo) + ')';
        Open;
        with oProduto do
        begin
@@ -115,7 +115,7 @@ begin
     with sqlSequencia do
     begin
       SQLConnection := DmConexao.SQLConexao;
-      CommandText := 'select coalesce(max(codigo), 0) + 1 as seq from prod' ;
+      CommandText := 'select coalesce(max(codigo), 0) + 1 as seq from produtos' ;
       Open;
       Result := sqlSequencia.FieldByName('seq').AsInteger;
     end;
